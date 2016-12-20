@@ -30,6 +30,15 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{subfigure}
+\usepackage{array}
+
+% newcommand
+\newcommand{\fulltoday}{\ifcase\month\or
+    Jan.\or Feb.\or Mar.\or Apr.\or May\or Jun.\or
+    Jul.\or Aug.\or Sep.\or Oct.\or Nov.\or Dec.\fi
+    \space\number\day\
+    \space\number\year}
+\newcolumntype{P}{>{\centering\arraybackslash}p{50mm}}
 
 \pagestyle{plain}
 %% delete page number
@@ -42,8 +51,8 @@
 % ======================================================================
 \begin{document}
 
-\begin{tabular}{ |p{50mm}|p{50mm}|p{50mm}| } \hline
-\includegraphics[height=25mm]{figs/images.eps} & & ISR.35-GNL.11  \rule[0mm]{0mm}{20mm} \\ \hline
+\begin{tabular}{ |P|P|P| } \hline
+\includegraphics[height=23mm]{figs/images.eps} & & \raisebox{10mm}{ \Large{ISR.35-GNL.11} }  \rule[0mm]{0mm}{25mm} \\ \hline
 \end{tabular}
 
 
@@ -53,17 +62,16 @@
   Test Plan for Magnetic Shielding of Polarization Modulator \\
   %% comment
 \end{center}
-\vspace*{80mm}
+\vspace*{100mm}
 
 
 \begin{tabular}{ |p{50mm}|p{50mm}|p{50mm}| } \hline
-% approved by & reviewd by  & authors \rule[-25mm]{0mm}{30mm}  \\ \cline{1-3}
-approved by & reviewed by  & authors  \\
-& & Yuki Sakurai \\
-& & Tomotake Matsumura \vspace*{15mm} \\
-& & data Nov. 26, 2016 \\
+approved by & reviewed by  & authors            \\
+            &             & Yuki Sakurai       \\
+            &             & Tomotake Matsumura \\
+            &             &                    \\
+            &             & data: \fulltoday   \\
 \hline
-
 \end{tabular}
 
 \clearpage
@@ -102,12 +110,12 @@ In this document, we report a test plan for the magnetic shield of the polarizat
 The design and the evaluation of the magnetic shield are carried out by a electromagnetic field simulation.
 The software package is a finite element method (FEM) based simulation called "JMAG".
 The JMAG has an advantage of a high-speed computation and containing numerous application packages of the electromagnetic field analysis.
-The magnetic shielding is also included in the application packages.
+The magnetic shielding is also included in the packages.
 It has several achievements such as a design of a magnetically shielded room and so on.
 
 At first, we must study the necessity of the PMU magnetic shield.
 Figure \ref{fig:DT} shows the decision tree for the PMU magnetic shield.
-The magnetic shield is to be installed by default for the detector and its readout (detector magnetic shield).
+The magnetic shield for the detector and its readout (detector magnetic shield) is to be installed by default.
 However, it does not take into account the magnetic field from the PMU magnet.
 The first decision point is whether the detector magnetic shield is sufficient or not.
 We estimate the magnetic field due to the PMU magnet at the detector position by the JMAG simulation.
@@ -125,10 +133,10 @@ If it is sufficient, there is no necessity of the PMU magnetic shield.
 
 Then, we investigate the magnetic circuit of the PMU magnet.
 The magnetic circuit is a combination of the magnetization and the yoke.
-It has a possibility to reduce the magnetic field at the detector position.
-We currently studying the following magnetic circuit: radial magnetization, two iron yoke on inner and outer side.
-Figure \ref{fig:MC} shows the magnet with axial magnetization and the alternative magnetic circuit.
-It improves both the performance of the SMB and the magnetic shielding.
+It has a possibility to reduce the magnetic field leakage due to the PMU magnet.
+Figure \ref{fig:MC} shows the magnet with axial magnetization and an alternative magnetic circuit.
+The alternative one has a magnet with radial magnetization and two iron yokes on both inner and outer side.
+It improves not only the magnetic shielding but also the performance of the SMB.
 We perform the same simulation as above with this magnetic circuit.
 Then, we decide to the necessity of the PMU magnetic shield.
 
@@ -142,18 +150,22 @@ Then, we decide to the necessity of the PMU magnetic shield.
 If the two decision points are passed, the PMU magnetic field must be constructed.
 In order to design it, we must determine mainly three design parameters as following,
 \begin{itemize}
- \item Position: PMU side, detector side
- \item Shape: plate, cylinder, cylinder + bottom plate
+ \item Position: PMU side or detector side
+ \item Shape: plate or cylinder or cylinder + bottom plate
  \item Material: A4K, Amunickel, Cryoperm10, e.t.c.
 \end{itemize}
 There is a trade-off between a shielding power and a weight.
-We perform the simulation with their all combinations in order to select the best parameters.
-Finally, final design of the PMU magnetic shield is determined with including an interface with other equipments.
+We perform the simulation with their all combinations in order to select the best configuration.
+The final design of the PMU magnetic shield is determined with including an interface with other equipments.
 
 Simultaneously designing the magnetic shield by the simulation, we also compare the simulation with the actual measurement.
-Since it is difficult to perform the comparison with the diameter of $\phi$=400~mm, the SMB system with with the $\phi$=60~mm is used.
-This small prototype is already constructed for the development of the PMU itself.
-
+The comparison is performed in order to verify material properties in the JMAG simulation.
+The JMAG software does not include properties of magnetic shield materials for cryogenic temperature.
+Thus, it is necessary to input properties from material specifications and to adjust with a measurement.
+We start to the simple comparison at room temperature with a bar magnet and plates of magnetic shield materials.
+This test is also performed using cryostat for the cryogenic properties of the materials.
+Then, we perform the comparison using a PMU prototype in order to evaluate the designed magnetic shield.
+The PMU prototype with the diameter of $\phi$=400~mm is currently constructing at Kavli IPMU for the development of the SMB system.
 
 
 \section*{Summary}
@@ -162,9 +174,9 @@ The JMAG electromagnetic simulation is employed to design and evaluate it.
 At first, the necessity of the magnetic shield is investigated with considering the detector magnetic shield and the magnetic circuit of the PMU magnet.
 Then, we design the magnetic shield by the simulation with several combinations of design parameters.
 The final design is determined by a trade-off study between the shielding power and the weight of the magnetic shield.
-Simultaneously, the comparison between the simulation and the measurement is performed with a small prototype.
+Simultaneously, the comparison between a simulation and a measurement is performed using a small PMU prototype in order to test the designed magnetic shield.
 
-
+\newpage
 \section*{Comments from Reviewers}
 
 \end{document}
