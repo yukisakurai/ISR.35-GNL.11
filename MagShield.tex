@@ -76,7 +76,7 @@ approved by & reviewed by  & authors            \\
 
 \clearpage
 
-\section*{Purpose}
+\section{Purpose}
 In this document we report on our reply to the action item ISR.35-GNL.11, which is identified with following information: \\
 ID: ISR.35-GNL.11 \\
 ITEM: Set a test plan to check if magnetic shielding is sufficient. \\
@@ -86,16 +86,19 @@ SECTION IN PHASE-A1 PLAN DOCUMENT: Aug. 2016, \\ % Section 4.1.2.3,
 WBS ID: WBS A1.02.06.03.08 \\ % WBS A1.01.02
 EXPECTED OUTPUTS: Establish test plan for Magnetic Shielding of Polarization Modulator. \\
 
-\section*{Introduction}
-The LiteBIRD polarization modulator unit (PMU) employs a superconducting magnetic bearing (SMB) in the rotational mechanism.
-The SMB is a contactless bearing.%~\cite{smb}.
-It employs an array of high temperature superconductor tiles as a stator and a permanent magnet as a rotor.
+\section{Introduction}
+The detector of the LiteBIRD is a transition edge sensor (TES), and it is read out by a SQUID.
+Therefore, an external magnetic field can be a problem in general.
+The requirements to the external magnetic field are less than 2~Gauss for long-term stability and less than $5\times10^{-5}$~Gauss/$\sqrt(\mathrm{Hz})$ for short-term fluctuation.
+Since these are tentative values, an experiment is in preparation in order to justify them.
+Sources of the external magnetic field are a motor of a satellite bus system, environmental magnetic field in a L2 orbit and so on.
+One of the main sources is a polarization modulator unit (PMU).
+The PMU employs a superconducting magnetic bearing (SMB) in the rotational mechanism, which is a contactless bearing.%~\cite{smb}.
+In the SMB, a relatively large permanent magnet formed in ring shape is used as a rotor.
 The inner diameter of the rotor magnet is 400~mm and 200~mm for the Low Frequency Telescope (LFT) and the High Frequency Telescope, respectively.
 The half-wave plate is mounted inside of the rotor magnet.
 Figure \ref{fig:telescope} shows the position of the PMU and the detector with their distance.
-The effect of the magnetic field from the large magnet on the TES detector and the SQUID board can not be ignored.
-Thus, a magnetic shield for the PMU must be considered.
-We must design and evaluate it if necessary.
+Thus, a magnetic shield for the PMU must be designed and evaluated if necessary.
 In this document, we report a test plan for the magnetic shield of the polarization modulator following the action item from the International Science Review.
 
 \begin{figure}[htbp]
@@ -105,13 +108,29 @@ In this document, we report a test plan for the magnetic shield of the polarizat
   \label{fig:telescope}
 \end{figure}
 
-\section*{Description}
+\section{Description}
 
-The design and the evaluation of the magnetic shield are carried out by a electromagnetic field simulation.
+There are mainly three test plan for the PMU magnetic shield.
+\begin{enumerate}
+ \item Justifications of TES requirements
+ \item Magnetic field simulations, design of the magnetic shield
+ \item Test of designed magnetic shield
+\end{enumerate}
+
+\subsection{Justifications of TES requirements}
+
+blah, blah, blah ...
+
+\subsection{Magnetic field simulations, design of the magnetic shield}
+
+The evaluation of the magnetic shield due to the PMU magnet is carried out by a electromagnetic field simulation.
 The software package is a finite element method (FEM) based simulation called "JMAG".
 The JMAG has an advantage of a high-speed computation and containing numerous application packages of the electromagnetic field analysis.
 The magnetic shielding is also included in the packages.
 It has several achievements such as a design of a magnetically shielded room and so on.
+In order to cross check the simulation result, we also apply the electromagnetic field simulation by a COMSOL software.
+The COMSOL is multi-physics simulation software based on the FEM.
+It also has several achievements of the magnetic field analysis.
 
 At first, we must study the necessity of the PMU magnetic shield.
 Figure \ref{fig:DT} shows the decision tree for the PMU magnetic shield.
@@ -156,25 +175,25 @@ In order to design it, we must determine mainly three design parameters as follo
 \end{itemize}
 There is a trade-off between a shielding power and a weight.
 We perform the simulation with their all combinations in order to select the best configuration.
-The final design of the PMU magnetic shield is determined with including an interface with other equipments.
+The final design of the PMU magnetic shield must be determined with including an interface with other equipments.
 
-Simultaneously designing the magnetic shield by the simulation, we also compare the simulation with the actual measurement.
-The comparison is performed in order to verify material properties in the JMAG simulation.
+\subsection{Test of the magnetic shield}
+
+Simultaneously designing the magnetic shield by the simulation, we test the magnetic shield by an actual measurement.
+At first, we measure material propeties of the magnetic shield.
 The JMAG software does not include properties of magnetic shield materials for cryogenic temperature.
 Thus, it is necessary to input properties from material specifications and to adjust with a measurement.
-We start to the simple comparison at room temperature with a bar magnet and plates of magnetic shield materials.
-This test is also performed using cryostat for the cryogenic properties of the materials.
-Then, we perform the comparison using a PMU prototype in order to evaluate the designed magnetic shield.
-The PMU prototype with the diameter of $\phi$=400~mm is currently constructing at Kavli IPMU for the development of the SMB system.
+The measurement is performed in room temperature and cryogenic temperature using cryostat.
 
+TES (100~mK cryostat) meets SMB (4~K cryostat) @IPMU
 
-\section*{Summary}
+\section{Summary}
 We describe the test plan for the magnetic field for the PMU.
 The JMAG electromagnetic simulation is employed to design and evaluate it.
 At first, the necessity of the magnetic shield is investigated with considering the detector magnetic shield and the magnetic circuit of the PMU magnet.
 Then, we design the magnetic shield by the simulation with several combinations of design parameters.
 The final design is determined by a trade-off study between the shielding power and the weight of the magnetic shield.
-Simultaneously, the comparison between a simulation and a measurement is performed using a small PMU prototype in order to test the designed magnetic shield.
+Simultaneously, the comparison between a simulation and a measurement is performed using a PMU prototype at IPMU in order to test the designed magnetic shield.
 
 \newpage
 \section*{Comments from Reviewers}
